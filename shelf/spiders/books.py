@@ -47,8 +47,8 @@ class BooksSpider(scrapy.Spider):
             "description": response.css(
                 "#product_description + p::text"
             ).get(),
-            "amount_in_stock": re.sub(
+            "amount_in_stock": int(re.sub(
                 "\D", "",  # NOQA W605
                 product_detail.get("Availability")
-            ),
+            )),
         }
